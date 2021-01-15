@@ -1,12 +1,28 @@
-node {
-
-    checkout scm
-
-    docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
-
-        def customImage = docker.build("nijinnath/nodeApp")
-
-        /* Push the container to the custom Registry */
-        customImage.push()
+pipeline {
+  agent any
+    
+  tools {nodejs "node"}
+    
+  stages {
+        
+    stage('Git') {
+      steps {
+        git 'https://github.com/****/****'
+      }
     }
+     
+    stage('Build') {
+      steps {
+        sh 'npm install'
+         sh '<<Build Command>>'
+      }
+    }  
+    
+            
+    stage('Test') {
+      steps {
+        sh 'node test'
+      }
+    }
+  }
 }
