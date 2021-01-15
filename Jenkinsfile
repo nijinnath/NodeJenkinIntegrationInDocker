@@ -7,22 +7,14 @@ pipeline {
         
     stage('Git') {
       steps {
-        git 'https://github.com/****/****'
+        git 'https://github.com/nijinnath/NodeJenkinIntegrationInDocker.git'
       }
     }
      
     stage('Build') {
       steps {
         sh 'npm install'
-         sh '<<Build Command>>'
       }
     }  
-    
-            
-    stage('Test') {
-      steps {
-        sh 'node test'
-      }
-    }
   }
 }
