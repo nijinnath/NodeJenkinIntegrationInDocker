@@ -7,7 +7,7 @@ pipeline {
         
     stage('Git') {
       steps {
-        git 'https://github.com/nijinnath/NodeJenkinIntegrationInDocker.git'
+        git branch: 'main', url: 'https://github.com/nijinnath/NodeJenkinIntegrationInDocker.git'
       }
     }
      
